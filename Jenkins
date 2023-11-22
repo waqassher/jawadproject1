@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION = 'your-aws-region'
+        ECS_CLUSTER_NAME = 'your-ecs-cluster'
+        ECS_SERVICE_NAME = 'your-ecs-service'
+        DOCKER_IMAGE_NAME = 'your-docker-image-name'
+        AWS_ACCESS_KEY_ID = credentials('your-aws-access-key-id-credential-id')
+        AWS_SECRET_ACCESS_KEY = credentials('your-aws-secret-access-key-credential-id')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
